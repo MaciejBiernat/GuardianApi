@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using GuardianNews.Models;
 using GuardianNews.Repositories;
 using GuardianNews.GuardianApi;
+using GuardianNews.Services;
 
 namespace GuardianNews.Controllers
 {
@@ -16,9 +17,11 @@ namespace GuardianNews.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IArticleRepository _articleRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IArticleRepository articleRepository)
         {
             _logger = logger;
+            _articleRepository = articleRepository;
+
         }
 
         public IActionResult Index()
@@ -34,12 +37,11 @@ namespace GuardianNews.Controllers
             return View();
         }
 
-        public async IActionResult UploadToDb()
+        public async Task<IActionResult> UploadToDb()
         {
             var articles = await ArticleProcessor.LoadArticles();
-
-            _articleRepository.AddRangeAsync(articles);
-            return View();
+            _articleRepository.AddRangeAsync(Mapper.MapToEntity(articles));
+            return View("Home");
         }
 
 
