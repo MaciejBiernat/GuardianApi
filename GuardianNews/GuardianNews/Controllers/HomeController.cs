@@ -26,6 +26,7 @@ namespace GuardianNews.Controllers
 
         public IActionResult Index()
         {
+            ViewData["Success"] = "";
             return View();
         }
 
@@ -40,8 +41,9 @@ namespace GuardianNews.Controllers
         public async Task<IActionResult> UploadToDb()
         {
             var articles = await ArticleProcessor.LoadArticles();
-            _articleRepository.AddRangeAsync(Mapper.MapToEntity(articles));
-            return View("Home");
+            // _articleRepository.AddRangeAsync(Mapper.MapToEntity(articles));
+            ViewData["success"] = "Articles uploaded to server";
+            return View("Index");
         }
 
 
