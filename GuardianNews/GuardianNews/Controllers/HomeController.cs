@@ -41,7 +41,7 @@ namespace GuardianNews.Controllers
         public async Task<IActionResult> UploadToDb()
         {
             var articles = await ArticleProcessor.LoadArticles();
-            // _articleRepository.AddRangeAsync(Mapper.MapToEntity(articles));
+            _articleRepository.AddRangeAsync(Mapper.MapToEntity(articles));
             ViewData["success"] = "Articles uploaded to server";
             return View("Index");
         }
