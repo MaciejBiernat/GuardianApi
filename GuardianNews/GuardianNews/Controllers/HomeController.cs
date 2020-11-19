@@ -30,11 +30,18 @@ namespace GuardianNews.Controllers
         {
             ApiProcessor.InitializeClient();
             var articles = await ArticleProcessor.LoadArticles();
-
             ViewData["Articles"] = articles;
             return View();
-
         }
+
+        public async IActionResult UploadToDb()
+        {
+            var articles = await ArticleProcessor.LoadArticles();
+
+            _articleRepository.AddRangeAsync(articles);
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

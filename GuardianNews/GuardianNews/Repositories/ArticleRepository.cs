@@ -25,15 +25,15 @@ namespace GuardianNews.Repositories
             _context.SaveChanges();
         }
 
-        public async void AddRangeAsync(Article[] articles)
+        public async void AddRangeAsync(List<Article> articles)
         {
             await _context.AddRangeAsync(articles);
             _context.SaveChanges();
         }
 
-        public async Task<Article[]> GetAllAsync()
+        public async Task<List<Article>> GetAllAsync()
         {
-            return await table.ToArrayAsync();
+            return await table.ToListAsync();
         }
     }
 }

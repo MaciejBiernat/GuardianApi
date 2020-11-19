@@ -11,9 +11,9 @@ namespace GuardianNews.Repositories
     {
         void AddAsync(Article article);
 
-        void AddRangeAsync(Article[] articles);
+        void AddRangeAsync(List<Article> articles);
 
-        Task<Article[]> GetAllAsync();
+        Task<List<Article>> GetAllAsync();
 
     }
 }
