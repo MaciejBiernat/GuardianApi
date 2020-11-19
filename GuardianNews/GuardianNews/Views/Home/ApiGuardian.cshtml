@@ -1,6 +1,34 @@
 ﻿@{
     ViewData["Title"] = "ApiGuardian";
+    var articles = ViewData["Articles"] as List<GuardianNews.Models.ArticleModel>;
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<h1>Newest Guardian Articles - API Results</h1>
+
+
+<div class='table-responsive'>
+    <table class='table'>
+        <thead>
+            <tr>
+                <button class='btn btn-primary'>
+                    Update Articles to Database
+                </button>
+            </tr>
+            <tr>
+                <th>Section</th>
+                <th>Title</th>
+                <th>Publication Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var article in articles)
+            {
+                <tr>
+                    <td>@article.SectionName</td>
+                    <td><a href="@article.WebUrl"> @article.WebTitle </a></td>
+                    <td>@article.WebPublicationDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

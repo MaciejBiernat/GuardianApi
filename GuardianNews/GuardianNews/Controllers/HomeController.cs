@@ -26,10 +26,13 @@ namespace GuardianNews.Controllers
             return View();
         }
 
-        public async Task<List<ArticleModel>> ApiGuardianAsync()
+        public async Task<IActionResult> ApiGuardianAsync()
         {
             ApiProcessor.InitializeClient();
-            return await ArticleProcessor.LoadArticles();
+            var articles = await ArticleProcessor.LoadArticles();
+
+            ViewData["Articles"] = articles;
+            return View();
 
         }
 
