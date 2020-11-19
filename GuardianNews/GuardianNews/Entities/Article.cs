@@ -8,6 +8,7 @@ namespace GuardianNews.Entities
 {
     public class Article
     {
+        public int Id { get; set; }
         public string SectionName { get; set; }
         public DateTime WebPublicationDate { get; set; }
 
