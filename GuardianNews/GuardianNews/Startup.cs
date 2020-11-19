@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GuardianNews.Data;
+using GuardianNews.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +26,7 @@ namespace GuardianNews
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<GuardianContext>();
+            services.AddScoped<IArticleRepository, ArticleRepository>();
             services.AddControllersWithViews();
         }
 

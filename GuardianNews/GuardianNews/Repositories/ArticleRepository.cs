@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GuardianNews.Repositories
 {
-    public class ArticleRepository : IArticleRepository<Article>
+    public class ArticleRepository : IArticleRepository
     {
         private readonly GuardianContext _context;
         private DbSet<Article> table;
