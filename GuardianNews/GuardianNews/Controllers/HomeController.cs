@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using GuardianNews.Models;
 using GuardianNews.Repositories;
+using GuardianNews.GuardianApi;
 
 namespace GuardianNews.Controllers
 {
@@ -25,9 +26,11 @@ namespace GuardianNews.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public async Task<List<ArticleModel>> ApiGuardianAsync()
         {
-            return View();
+            ApiProcessor.InitializeClient();
+            return await ArticleProcessor.LoadArticles();
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
