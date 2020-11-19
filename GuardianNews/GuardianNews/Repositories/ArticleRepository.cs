@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GuardianNews.Repositories
 {
-    public class ArticleRepository : IRepository<Article>
+    public class ArticleRepository : IArticleRepository<Article>
     {
         private readonly GuardianContext _context;
         private DbSet<Article> table;
@@ -19,15 +19,15 @@ namespace GuardianNews.Repositories
             table = _context.Set<Article>();
         }
 
-        public async void AddAsync(Article entity)
+        public async void AddAsync(Article article)
         {
-            await _context.AddAsync(entity);
+            await _context.AddAsync(article);
             _context.SaveChanges();
         }
 
-        public async void AddRangeAsync(Article[] entities)
+        public async void AddRangeAsync(Article[] articles)
         {
-            await _context.AddRangeAsync(entities);
+            await _context.AddRangeAsync(articles);
             _context.SaveChanges();
         }
 
