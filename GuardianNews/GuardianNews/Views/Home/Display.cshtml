@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Dsplay Articles";
+    var articles = ViewData["Articles"] as List<GuardianNews.Models.ArticleModel>;
+}
+
+<h1>Guardian Articles - Archive</h1>
+
+<div class='table-responsive'>
+    <table class='table'>
+        <thead>
+            <tr>
+            </tr>
+            <tr>
+                <th>Section</th>
+                <th>Title</th>
+                <th>Publication Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var article in articles)
+            {
+                <tr>
+                    <td>@article.SectionName</td>
+                    <td><a href="@article.WebUrl"> @article.WebTitle </a></td>
+                    <td>@article.WebPublicationDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

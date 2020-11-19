@@ -33,7 +33,8 @@ namespace GuardianNews.Repositories
 
         public async Task<List<Article>> GetAllAsync()
         {
-            return await table.ToListAsync();
+            var result = await table.ToListAsync();
+            return result;
         }
     }
 }

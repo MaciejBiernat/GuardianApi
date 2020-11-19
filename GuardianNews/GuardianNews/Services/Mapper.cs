@@ -58,6 +58,7 @@ namespace GuardianNews.Services
                 model.WebPublicationDate = entity.WebPublicationDate;
                 model.WebTitle = entity.WebTitle;
                 model.WebUrl = entity.WebUrl;
+                models.Add(model);
             }
             return models;
         }

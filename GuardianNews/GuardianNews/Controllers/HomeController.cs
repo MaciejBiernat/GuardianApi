@@ -46,6 +46,13 @@ namespace GuardianNews.Controllers
             return View("Index");
         }
 
+        public async Task<IActionResult> Display()
+        {
+            var articles = Mapper.MapToModel(await _articleRepository.GetAllAsync());
+            ViewData["Articles"] = articles;
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
