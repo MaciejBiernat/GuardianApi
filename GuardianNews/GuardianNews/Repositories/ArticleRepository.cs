@@ -12,7 +12,7 @@ namespace GuardianNews.Repositories
     public class ArticleRepository : IArticleRepository
     {
         private readonly GuardianContext _context;
-        private DbSet<Article> table;
+        private readonly DbSet<Article> table;
         public ArticleRepository(GuardianContext context)
         {
             _context = context;
@@ -22,13 +22,13 @@ namespace GuardianNews.Repositories
         public async void AddAsync(Article article)
         {
             await _context.AddAsync(article);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
         public async void AddRangeAsync(List<Article> articles)
         {
             await _context.AddRangeAsync(articles);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
         public async Task<List<Article>> GetAllAsync()

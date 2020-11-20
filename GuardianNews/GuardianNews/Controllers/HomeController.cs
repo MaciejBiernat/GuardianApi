@@ -15,12 +15,10 @@ namespace GuardianNews.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IArticleRepository _articleRepository;
 
-        public HomeController(ILogger<HomeController> logger, IArticleRepository articleRepository)
+        public HomeController(IArticleRepository articleRepository)
         {
-            _logger = logger;
             _articleRepository = articleRepository;
 
         }
