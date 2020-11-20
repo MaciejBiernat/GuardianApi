@@ -9,13 +9,19 @@
     <table class='table'>
         <thead>
             <tr>
-            </tr>
-            <tr>
-                <th>Section</th>
-                <th>Title</th>
-                <th>Publication Date</th>
-            </tr>
-        </thead>
+                @if (articles.Count == 0)
+                {
+                    <td>
+                        No content in database. Current news are on <a asp-action="ApiGuardian" asp-controller="home">Guardian Api</a>
+                    </td>
+                }
+                </tr>
+                <tr>
+                    <th>Section</th>
+                    <th>Title</th>
+                    <th>Publication Date</th>
+                </tr>
+            </thead>
         <tbody>
             @foreach (var article in articles)
             {
