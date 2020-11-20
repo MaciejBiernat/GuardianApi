@@ -1,4 +1,5 @@
 ﻿using GuardianNews.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GuardianNews.Data
 {
-    public class GuardianContext :DbContext
+    public class GuardianContext :IdentityDbContext
     {
         private readonly IConfiguration _config;
 
