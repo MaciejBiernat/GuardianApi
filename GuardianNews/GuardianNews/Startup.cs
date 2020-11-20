@@ -27,8 +27,13 @@ namespace GuardianNews
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<GuardianContext>();
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<IdentityUser, IdentityRole>(opt =>
+            {
+                opt.Password.RequiredLength = 10;
+                opt.Password.RequireNonAlphanumeric = false;
+            })
                 .AddEntityFrameworkStores<GuardianContext>();
+
 
             services.AddScoped<IArticleRepository, ArticleRepository>();
             services.AddControllersWithViews();
