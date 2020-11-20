@@ -9,6 +9,7 @@ using GuardianNews.Models;
 using GuardianNews.Repositories;
 using GuardianNews.GuardianApi;
 using GuardianNews.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GuardianNews.Controllers
 {
@@ -30,6 +31,7 @@ namespace GuardianNews.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ApiGuardianAsync()
         {
             ApiProcessor.InitializeClient();
@@ -46,6 +48,7 @@ namespace GuardianNews.Controllers
             return View("Index");
         }
 
+        [Authorize]
         public async Task<IActionResult> Display()
         {
             var articles = Mapper.MapToModel(await _articleRepository.GetAllAsync());

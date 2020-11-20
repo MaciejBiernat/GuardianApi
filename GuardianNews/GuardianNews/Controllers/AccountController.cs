@@ -29,6 +29,12 @@ namespace GuardianNews.Controllers
             return RedirectToAction("index", "home");
         }
 
+        public async Task<IActionResult> LogoutRedirect()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("index", "home");
+        }
+
 
         [HttpGet]
         public IActionResult Register()
@@ -73,7 +79,7 @@ namespace GuardianNews.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("index", "home");
+                        return RedirectToAction("index", "home");
                 }
                     ModelState.AddModelError("", "Failed to Login");
             }

@@ -36,5 +36,6 @@ namespace GuardianNews.Repositories
             var result = await table.ToListAsync();
             return result;
         }
+
     }
 }
