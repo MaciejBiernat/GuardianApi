@@ -22,6 +22,13 @@ namespace GuardianNews.Controllers
 
         public SignInManager<IdentityUser> SignInManager { get; }
 
+        [HttpGet]
+        [Route("/Account/AccessDenied")]
+        public ActionResult AccessDenied()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
